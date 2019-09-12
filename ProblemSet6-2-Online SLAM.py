@@ -624,13 +624,17 @@ def online_slam(data, N, num_landmarks, motion_noise, measurement_noise):
 
         # now factor out the previous pose
         newlist = range(2, len(Omega.value))
+        # a取除却前两列的前两行
         a = Omega.take([0, 1], newlist)
+        # b取前两行和前两列相交的2x2矩阵
         b = Omega.take([0, 1])
+        # c取Xi列向量的前两个值
         c = Xi.take([0, 1], [0])
+        # 等式右边的Omega取右下角的(n-2)x(n-2)
         Omega = Omega.take(newlist) - a.transpose() * b.inverse() * a
         Xi = Xi.take(newlist, [0]) - a.transpose() * b.inverse() * c
-        # test
-        # test2
+
+
     # compute best estimate
     mu = Omega.inverse() * Xi
     return mu, Omega  # make sure you return both of these matrices to be marked correct.
