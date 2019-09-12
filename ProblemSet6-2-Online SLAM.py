@@ -629,7 +629,8 @@ def online_slam(data, N, num_landmarks, motion_noise, measurement_noise):
         c = Xi.take([0, 1], [0])
         Omega = Omega.take(newlist) - a.transpose() * b.inverse() * a
         Xi = Xi.take(newlist, [0]) - a.transpose() * b.inverse() * c
-
+        # test
+        # test2
     # compute best estimate
     mu = Omega.inverse() * Xi
     return mu, Omega  # make sure you return both of these matrices to be marked correct.
