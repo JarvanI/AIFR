@@ -40,7 +40,7 @@ def compute_value(grid,goal,cost):
                     for a in range(len(delta)):
                         x2 = x + delta[a][0]
                         y2 = y + delta[a][1]
-                        if x2 >= 0 and x2 < len(grid) and y2 >=0 and y2<len(grid[0]):
+                        if x2 >= 0 and x2 < len(grid) and y2 >= 0 and y2 < len(grid[0]):
                             v2 = value[x2][y2] + cost
                             if v2 < value[x][y]:
                                 change = True

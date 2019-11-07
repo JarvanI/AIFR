@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ----------
 # User Instructions:
 #
@@ -38,7 +39,8 @@ def search(grid,init,goal,cost):
     # ----------------------------------------
 
     #To check the cells once they are expanded, and to not expand them again
-    closed = [[0 for row in range(len(grid[0]))] for col in range(len(grid))] #or closed = [[0] * len(grid[0]) for i in grid]
+    closed = [[0 for row in range(len(grid[0]))] for col in range(len(grid))]
+    #or closed = [[0] * len(grid[0]) for i in grid]
 
     #set the value of the starting cell to 1, since you are expanding it.
     closed[init[0]][init[1]] = 1
@@ -61,7 +63,6 @@ def search(grid,init,goal,cost):
 
         #当还有路走时
         else:
-
             open.sort()
             open.reverse()
             next = open.pop()

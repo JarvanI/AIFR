@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # -----------
 # User Instructions:
 #
@@ -11,9 +12,11 @@
 # ----------
 
 
-grid = [[0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]]
+grid = [[0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 1, 0]]
 init = [1, 1]
 goal = [len(grid)-1, len(grid[0])-1]
 cost = 1
@@ -69,22 +72,22 @@ def search(grid,init,goal,cost):
             expand[x][y] = count
             count += 1
 
-        #当前已经找到终点
-        if x == goal[0] and y == goal[1]:
-            found = True
+            #当前已经找到终点
+            if x == goal[0] and y == goal[1]:
+                found = True
 
-        #有路走，且还没找到终点
-        else:
-            for i in range(len(delta)):
-                x2 = x + delta[i][0]
-                y2 = y + delta[i][1]
+            #有路走，且还没找到终点
+            else:
+                for i in range(len(delta)):
+                    x2 = x + delta[i][0]
+                    y2 = y + delta[i][1]
 
-                #还在表格范围内，上下左右各走一步并记录
-                if x2 >= 0 and x2 < len(grid) and y2 >= 0 and y2 < len(grid[0]):
-                    if closed[x2][y2] == 0 and grid[x2][y2] == 0:
-                        g2 = g + cost
-                        open.append([g2, x2, y2])
-                        closed[x2][y2] = 1
+                    #还在表格范围内，上下左右各走一步并记录
+                    if x2 >= 0 and x2 < len(grid) and y2 >= 0 and y2 < len(grid[0]):
+                        if closed[x2][y2] == 0 and grid[x2][y2] == 0:
+                            g2 = g + cost
+                            open.append([g2, x2, y2])
+                            closed[x2][y2] = 1
     #print(next)
     for i in range(len(expand)):
         print(expand[i])
